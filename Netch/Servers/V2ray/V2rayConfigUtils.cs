@@ -235,7 +235,7 @@ public static class V2rayConfigUtils
                     {
                         allowInsecure = Global.Settings.V2RayConfig.AllowInsecure
                     };
-                    var serverName = server.ServerName.ValueOrDefault();
+                    var serverName = trojan.Host.ValueOrDefault();
                     if (!serverName.IsNullOrEmpty())
                     {
                         tlsSettings.serverName = serverName;

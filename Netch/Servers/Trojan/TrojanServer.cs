@@ -21,7 +21,7 @@ public class TrojanServer : Server
     /// <summary>
     ///     伪装域名
     /// </summary>
-    public string? Host { get; set; }
+    public string? Host { get; set; } = string.Empty;
 
     /// <summary>
     ///     TLS 底层传输安全
