@@ -233,9 +233,13 @@ public static class V2rayConfigUtils
                 {
                     var tlsSettings = new TlsSettings
                     {
-                        allowInsecure = Global.Settings.V2RayConfig.AllowInsecure,
-                        serverName = trojan.Host ?? ""
+                        allowInsecure = Global.Settings.V2RayConfig.AllowInsecure
                     };
+                    var serverName = server.ServerName.ValueOrDefault();
+                    if (!serverName.IsNullOrEmpty())
+                    {
+                        tlsSettings.serverName = serverName;
+                    }
 
                     switch (trojan.TLSSecureType)
                     {
@@ -300,9 +304,13 @@ public static class V2rayConfigUtils
         {
             var tlsSettings = new TlsSettings
             {
-                allowInsecure = Global.Settings.V2RayConfig.AllowInsecure,
-                serverName = server.ServerName.ValueOrDefault() ?? server.Host.SplitOrDefault()?[0]
+                allowInsecure = Global.Settings.V2RayConfig.AllowInsecure
             };
+            var serverName = server.ServerName.ValueOrDefault();
+            if (!serverName.IsNullOrEmpty())
+            {
+                tlsSettings.serverName = serverName;
+            }
 
             switch (server.TLSSecureType)
             {
